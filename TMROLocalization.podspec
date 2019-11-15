@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "TMROLocalization"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "A simple way to Localize copy in your app, written in Swift"
 
   spec.description  = <<-DESC
