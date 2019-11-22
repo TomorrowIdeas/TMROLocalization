@@ -17,8 +17,6 @@ extension NSMutableAttributedString {
         let nsString = self.string as NSString
         let matchRanges = regex.matches(in: self.string,
                                         range: NSRange(location: 0, length: nsString.length))
-
-        print(matchRanges)
         for (index, range) in matchRanges.reversed().enumerated() {
             if let argument = arguments.reversed()[safe: index] {
                 self.mutableString.replaceCharacters(in: range.range, with: argument)
