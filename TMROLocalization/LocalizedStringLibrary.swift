@@ -15,6 +15,9 @@ public func localized(_ localized: Localized) -> String {
 public struct LocalizedStringLibrary {
 
     public static var shared = LocalizedStringLibrary()
+    
+    /// Used to access IDs for strings that have just been localized
+    public var didLocalizeStringWithID: ((String)->())?
 
     public var library: Dictionary<String, String> {
         didSet {
@@ -48,6 +51,7 @@ public struct LocalizedStringLibrary {
         let mutableString = NSMutableAttributedString(string: localizedString)
         mutableString.replace(arguments: localizedArguments)
 
+        self.didLocalizeStringWithID?(localized.identifier)
         return mutableString.string
     }
 
