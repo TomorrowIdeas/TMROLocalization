@@ -11,7 +11,9 @@ import Foundation
 extension NSMutableAttributedString {
 
     func replace(arguments: [String]) {
-        guard let regex = try? NSRegularExpression(pattern: "@\\([a-z]*\\)",
+        // pattern matches letters, spaces, apostrophes, underscores & hyphens; between an openning & closing paranthesis, starting with an @ symbol
+        // e.g. @(this matches) @(this_matches-too)  @(but&NOT*punctuation!)
+        guard let regex = try? NSRegularExpression(pattern: "@\\([\\w\\s'_-]*\\)",
                                                    options: .caseInsensitive) else { return }
         let nsString = self.string as NSString
         let matchRanges = regex.matches(in: self.string,
